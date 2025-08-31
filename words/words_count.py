@@ -2,7 +2,7 @@ class  WordsCount:
    def __init__(self, sentence):
       if isinstance(sentence, str):
          self._sentence = sentence
-      elif isinstance(sentence, WordCount):
+      elif isinstance(sentence, WordsCount):
          self._sentence = sentence._sentence
       else:
          raise TypeError("sentence type is not valid") 
@@ -50,6 +50,7 @@ class  WordsCount:
            
 
    
+
 
 
 
