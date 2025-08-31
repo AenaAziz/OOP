@@ -5,8 +5,7 @@ class  WordsCount:
       elif isinstance(sentence, WordsCount):
          self._sentence = sentence._sentence
       else:
-         raise TypeError("sentence type is not valid") 
-      self.word_repetation_times()  
+         raise TypeError("sentence type is not valid")
         
    @property
    def sentence(self): return self._sentence
@@ -17,11 +16,11 @@ class  WordsCount:
         raise TypeError("for changing the sentence, type is invalid")
       self._sentence = wordslist
 
-   def words_formation(self):
+   def _words_formation(self):
       return self._sentence.split()     
 
    def word_repetation_times(self):
-      words = self.words_formation()
+      words = self._words_formation()
       count = {}  
       for word in words:
            count[word] = count.get(word, 0) + 1      
@@ -50,6 +49,7 @@ class  WordsCount:
            
 
    
+
 
 
 
