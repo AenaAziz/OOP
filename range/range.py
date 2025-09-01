@@ -40,8 +40,7 @@ class Range:
         
     def _validation(self, start, stop, step):
        if stop is None:
-          value = start
-          stop = value
+          stop = start
           start = 0
        start = self._start_validation(start) 
        stop = self._stop_validation(stop)
@@ -111,5 +110,6 @@ class Range:
           
         
           
+
 
         
