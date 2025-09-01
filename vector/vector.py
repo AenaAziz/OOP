@@ -9,18 +9,19 @@ from functools import total_ordering
 class Vectors:
     def __init__(self, d=1): #default dimension value
         if isinstance(d, int):
-            self._coords= [0]*d
+         if d < 0: raise ValueError("dimension must be positive")
+         self._coords= [0]*d
         elif isinstance(d, str): #for d="3"
              d = self.dimension_validation(d)
              self._coords= [0]*d
         elif  isinstance(d, Vectors):
-            self._coords = d._coords[:] #copy constructor with  deep copy
+            self._coords = d._coords[:] #copy constructor with  deep copy because inner objects are immutable datatypes
         else:
             raise TypeError("unnmatched dimension type")
         
     def dimension_validation(self, d):
         if d.isdigit():
-            return int(d)
+         return int(d)
         raise ValueError("String dimension must contain digits only")  
 
     def __len__(self):
@@ -43,7 +44,7 @@ class Vectors:
             raise IndexError("index out of bound")
         
     def item_validation(self, value):
-            if value.isdigit():
+            if (value[0] in "+-" and value[1:].isdigit()) or value.isdigit():
                 return int(value) 
             raise ValueError("item should be digit")  
            
@@ -56,12 +57,9 @@ class Vectors:
             for j in range(len(self._coords)):
              result[j] = self._coords[j] + other._coords[j]  
             return result
-
         else:
             raise ValueError("unmatched vectors dimensions")  
        
-
-
     def __eq__(self, other):
         if not isinstance(other, Vectors):
             return False
@@ -83,4 +81,5 @@ class Vectors:
     @property
     def coords(self):
         """Return a safe copy of coordinates (protect encapsulation)"""
+
         return  self._coords[:] 
