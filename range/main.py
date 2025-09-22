@@ -45,9 +45,15 @@ try:
     range11 = Range(9)
     print(list(range11))
 
+    rg2 = Range(50, 90, 10)
+    for value in rg2:
+     print(value)
+
+    rg1 = Range(8, -10, -2)
+    for value in rg1:
+     print(value)
+
     #range12 = Range(None, None, None)
-
-
 
 except(TypeError, ValueError, AttributeError) as e:
     print(f"Error: {e}")
@@ -56,4 +62,5 @@ except(ImportError) as e:
    print(f"could not import range module")    
 
 except Exception as e:
+
    print(f"Unexpected Error:{e}")    
