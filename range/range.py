@@ -11,6 +11,7 @@ class Range:
         else:
             raise TypeError("start, step, and stop must be digit")
 
+        self._k =0
 
     def _start_validation(self, start):
         if isinstance(start, str):
@@ -62,14 +63,17 @@ class Range:
     @start.setter
     def start(self, value):
      self._start = self._start_validation(value)
-
+     self._k = 0
+        
     @stop.setter
     def stop(self, value):
      self._stop = self._stop_validation(value)
+     self._k = 0
 
     @step.setter
     def step(self, value):
      self._step = self._step_validation(value)
+     self._k = 0
 
     def __len__(self):
        if self._step > 0:
@@ -82,6 +86,17 @@ class Range:
        if not 0 <= j < len(self):
           raise IndexError("index out of range")
        return self._start + j * self._step 
+
+    def __iter__(self):
+       self._k = 0
+       return self
+
+    def __next__(self):
+       if self._k < len(self):
+        ch = self[self._k]
+        self._k += 1
+        return ch
+       raise StopIteration
     
     def __str__(self):
        return f"<{self._start} , {self._stop}, {self._step} >"
@@ -113,3 +128,4 @@ class Range:
 
 
         
+
