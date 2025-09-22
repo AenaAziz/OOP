@@ -18,5 +18,4 @@ class RandomElement:
 
     def choice(self):
        "pythonic"
-       result = self._list[random.randint(0, len(self._list)-1)]
-       return result
+       return self._list[random.randrange(len(self._list))]
