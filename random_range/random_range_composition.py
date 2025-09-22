@@ -19,3 +19,10 @@ class RandomElement:
     def choice(self):
        "pythonic"
        return self._list[random.randrange(len(self._list))]
+
+    def tra_choice(self):
+       """traditional"""
+       index = random.randrange(len(self._list))
+       element = self._list[index]
+       return element
+
